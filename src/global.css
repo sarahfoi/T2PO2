@@ -101,6 +101,7 @@ button:hover{
     border-width: 1px;
     border-style: solid;
     border-color: #CCC;
+    border: 1;
 
 }
 .input-container .error{
