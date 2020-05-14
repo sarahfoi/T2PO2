@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./styles.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import metodos from '../../methods';
 
 export default function Uniforme() {
   const formik = useFormik({
     initialValues: {
       f: "",
-      a: 0,
-      b: 0,
-      d: 0,
+      a: -3,
+      b: 6,
+      d: 0.5,
     },
     validationSchema: yup.object({
       f: yup.string().required("Obrigatório").label("Função"),
@@ -17,8 +18,14 @@ export default function Uniforme() {
       //b: yup.number().required("Obrigatório").label("b"),
       //d: yup.number().required("Obrigatório").moreThan(0).label("&Delta;"),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+        try{
+            const ret = await metodos('Uniforme',values);
+            console.log(ret);
+            alert(ret);
+        }catch({ret}){
+            console.log(ret);
+        }
     },
   });
 

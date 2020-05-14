@@ -1,9 +1,10 @@
-import {evaluate} from 'mathjs';
+import { evaluate } from "mathjs";
 
-import Uniforme from './Uniforme';
+import Uniforme from "./Uniforme";
 
 const metodos = {
-    Uniforme
+  Uniforme,
 };
 
-export default (metodos, {})
+export default (metodo, { f, ...args }) =>
+  metodos[metodo]({ f: (x) => evaluate(f, { x }), ...args });
