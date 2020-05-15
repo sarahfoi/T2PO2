@@ -1,3 +1,5 @@
+import {round} from 'mathjs';
+
 export default async({f,a,b,d}) => new Promise((resolve,reject) => {
     let x = a;
     let i = 0;
@@ -9,7 +11,7 @@ export default async({f,a,b,d}) => new Promise((resolve,reject) => {
         fx = f(x);
         if(fx > ant){
             if(flag)
-                return resolve((x- d));
+                return resolve(round(x- d,5));
             if(i<2) x= a;
             else x-=2*d;
             fx = f(x);
@@ -19,6 +21,6 @@ export default async({f,a,b,d}) => new Promise((resolve,reject) => {
         ant = fx;
         i++;
     }
-    return resolve(x-d);
+    return resolve(round(x-d,5));
     return reject(new Error("Não foi possível localizar o mínimo da função"));
 })
