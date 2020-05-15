@@ -1,4 +1,4 @@
-export default async({f,a,b,e}) => {
+export default async({f,a,b,e}) => new Promise((resolve,reject) =>{
     let alfa=0.618;
     let beta=0.382;
     let x=a;
@@ -19,5 +19,6 @@ export default async({f,a,b,e}) => {
             micra = x + (y-x)*alfa;
         }
     }
-    return (x+y)/2;
-}
+    resolve( (x+y)/2);
+    reject(new Error("Não foi possível encontrar o mínimo"))
+})
