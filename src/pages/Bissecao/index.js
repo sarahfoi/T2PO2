@@ -1,12 +1,12 @@
 import React from 'react';
 import 'materialize-css';
+import {TextInput} from 'react-materialize';
 
-import { Modal, Button } from 'react-materialize';
-
-const trigger = <Button>Open Modal</Button>;
 
 export default () => (
-  <Modal header="Modal Header" trigger={trigger}>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </Modal>
+  <div class ="row">
+    <div class="col s6">
+    <TextInput label= "função" id="TextInput" />
+    </div>
+  </div>
 );
