@@ -1,7 +1,6 @@
 export default async({f,a,b,d}) => new Promise((resolve,reject) => {
     let x = a;
     let i = 0;
-    let r = x;
     let ant = f(x);
     let fx=0;
     let flag= false;
@@ -13,6 +12,7 @@ export default async({f,a,b,d}) => new Promise((resolve,reject) => {
                 return resolve((x- d));
             if(i<2) x= a;
             else x-=2*d;
+            fx = f(x);
             flag=true;
             d*=0.1;
         }
