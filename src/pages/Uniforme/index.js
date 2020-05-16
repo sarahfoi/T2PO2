@@ -8,15 +8,15 @@ export default function Uniforme() {
   const formik = useFormik({
     initialValues: {
       f: "",
-      a: -3,
-      b: 6,
-      d: 0.5,
+      a: 0,
+      b: 0,
+      d: 0,
     },
     validationSchema: yup.object({
       f: yup.string().required("Obrigatório").label("Função"),
-      // a: yup.number().required("Obrigatório").label("a"),
-      //b: yup.number().required("Obrigatório").label("b"),
-      //d: yup.number().required("Obrigatório").moreThan(0).label("&Delta;"),
+      a: yup.number().required("Obrigatório").label("a"),
+      b: yup.number().required("Obrigatório").label("b"),
+      d: yup.number().required("Obrigatório").moreThan(0).label("Δ"),
     }),
     onSubmit: async (values) => {
         try{
@@ -45,6 +45,46 @@ export default function Uniforme() {
             />
             {formik.touched.f && formik.errors.f ? (
               <div className="error">{formik.errors.f}</div>
+            ) : null}
+
+            <label htmlFor="a">a</label>
+            <input
+              id="a"
+              name="a"
+              type="number"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.a}
+
+            />
+            {formik.touched.a && formik.errors.a ? (
+              <div className="error">{formik.errors.a}</div>
+            ) : null}
+
+            <label htmlFor="b">b</label>
+            <input
+              id="b"
+              name="b"
+              type="number"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.b}
+            />
+            {formik.touched.b && formik.errors.b ? (
+              <div className="error">{formik.errors.b}</div>
+            ) : null}
+
+            <label htmlFor="d">Δ</label>
+            <input
+              id="d"
+              name="d"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.d}
+            />
+            {formik.touched.d && formik.errors.d ? (
+              <div className="error">{formik.errors.d}</div>
             ) : null}
           </div>
           

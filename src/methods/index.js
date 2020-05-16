@@ -15,5 +15,7 @@ const metodos = {
   Newton
 };
 
-export default (metodo, { f, ...args }) =>
-  metodos[metodo]({fstring: f, f: (x) => evaluate(f, { x }), ...args });
+export default (metodo, { f,a,b, ...args }) =>{
+  if(a>b) [a,b] = [b,a];
+   return metodos[metodo]({fstring: f, f: (x) => evaluate(f, { x }),a,b, ...args });
+}
