@@ -8,9 +8,10 @@ export default function Uniforme() {
   const formik = useFormik({
     initialValues: {
       f: "",
-      a: -3,
-      b: 6,
-      d: 0.5,
+      a: -6,
+      b: 5,
+      e: 0.1
+      //d: 0.5,
     },
     validationSchema: yup.object({
       f: yup.string().required("Obrigatório").label("Função"),
@@ -20,7 +21,7 @@ export default function Uniforme() {
     }),
     onSubmit: async (values) => {
         try{
-            const ret = await metodos('Uniforme',values);
+            const ret = await metodos('Bissecao',values);
             console.log(ret);
             alert(ret);
         }catch({ret}){

@@ -6,7 +6,7 @@ export default async({f,a,b,d}) => new Promise((resolve,reject) => {
     let ant = f(x);
     let fx=0;
     let flag= false;
-    while(x<=b){
+    while(x<=b && i < 10000){
         x+=d;
         fx = f(x);
         if(fx > ant){
@@ -21,6 +21,6 @@ export default async({f,a,b,d}) => new Promise((resolve,reject) => {
         ant = fx;
         i++;
     }
-    return resolve(round(x-d,5));
+    if(i < 10001)return resolve(round(x-d,5));
     return reject(new Error("Não foi possível localizar o mínimo da função"));
 })
