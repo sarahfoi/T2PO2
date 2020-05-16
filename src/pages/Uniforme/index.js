@@ -78,7 +78,7 @@ export default function Uniforme() {
             <input
               id="d"
               name="d"
-              type="text"
+              type="number"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.d}
