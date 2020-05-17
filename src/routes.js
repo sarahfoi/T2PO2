@@ -10,7 +10,6 @@ import Fibonacci from './pages/Fibonacci';
 import SecaoAurea from './pages/SecaoAurea';
 import Newton from './pages/Newton';
 
-
 export default function Routes(){
     return(
         <div>
