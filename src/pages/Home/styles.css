@@ -1,0 +1,29 @@
+h1 {
+    font-size: 25px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    text-align: center;
+}
+
+.metodo {
+    font-size: 20px;
+    margin-left: 270px;
+}
+
+.alunos {
+    font-size: 15px;
+    vertical-align: sub;
+}
+
+.home {
+    color: black;
+    margin-right: 30px;
+    margin-top: 20px;
+    margin-left: 30px;
+    background: white;
+    border-radius: 8px;
+    padding: 96px;
+}
