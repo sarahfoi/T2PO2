@@ -35,7 +35,7 @@ export default function Bissecao() {
 
   return (
     
-    //<div class="section container">
+  //  <div class="container">
 
       <Row style={{marginTop: 30, marginLeft: 30, marginRight:30}}>
         <Col s={4} m={4} l={4}>
@@ -105,7 +105,7 @@ export default function Bissecao() {
                     ) : null}
                   </div>
                 </div>
-                <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Calcular mínimo
+                <button class="btn waves-effect waves-light btn-large cyan darken-1" type="submit" name="action">Calcular mínimo
                   <i class="material-icons right">send</i>
                 </button>
               </Row>
@@ -116,7 +116,7 @@ export default function Bissecao() {
           <CardPanel name="resposta" style={{textAlign: "center",minHeight: 486.75, maxHeight:486.75}}>
             <Row>
               <div class="col s12 m12 l12">
-                <CardPanel className="teal">
+                <CardPanel className="cyan darken-1">
                   <p style={{fontSize: 24}}>
                     <span className="white-text" name="resposta-x">Mínimo: x* = 0</span>
                   </p>
