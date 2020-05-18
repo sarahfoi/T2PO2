@@ -8,7 +8,7 @@ import Uniforme from './pages/Uniforme';
 import Bissecao from './pages/Bissecao';
 import Dicotomica from './pages/Dicotomica';
 import Fibonacci from './pages/Fibonacci';
-import SecaoAurea from './pages/SecaoAurea';
+import Aurea from './pages/SecaoAurea';
 import Newton from './pages/Newton';
 
 export default function Routes(){
@@ -21,7 +21,7 @@ export default function Routes(){
                 <Route path='/pages/ComoUsar' component={ComoUsar}/> 
                 <Route path='/metodos/uniforme' component={Uniforme}/>
                 <Route path='/metodos/dicotomica' component={Dicotomica}/>
-                <Route path='/metodos/aurea' component={SecaoAurea}/>
+                <Route path='/metodos/aurea' component={Aurea}/>
                 <Route path='/metodos/fibonacci' component={Fibonacci}/>
                 <Route path='/metodos/bissecao' component={Bissecao}/>
                 <Route path='/metodos/newton' component={Newton}/>

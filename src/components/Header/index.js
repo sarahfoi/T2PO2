@@ -6,27 +6,6 @@ import {Navbar,NavItem,Dropdown,Icon,Divider} from 'react-materialize';
 
 export default function Header(){
     return(
-        /*<div class='header-container'>
-            <span>Cálculo de Curvas</span>
-            <Link className='button' to='/metodos/uniforme'>
-                Busca Uniforme
-            </Link>
-            <Link className='button' to='/metodos/dicotomica'>
-                Busca Dicotômica
-            </Link>
-            <Link className='button' to='/metodos/aurea'>
-                Seção Áurea
-            </Link>
-            <Link className='button' to='/metodos/fibonacci'>
-                Busca de Fibonacci
-            </Link>
-            <Link className='button' to='/metodos/bissecao'>
-                Bisseção
-            </Link>
-            <Link className='button' to='/metodos/newton'>
-                Newton
-            </Link>
-        </div>*/
 
         <Navbar
             alignLinks="right"
@@ -72,23 +51,18 @@ export default function Header(){
                 <Link to='/metodos/uniforme'>
                     Busca Uniforme
                 </Link>
-                <Divider />
                 <Link to='/metodos/dicotomica'>
                     Busca Dicotômica
                 </Link>
-                <Divider />
                 <Link to='/metodos/aurea'>
                     Seção Áurea
                 </Link>
-                <Divider />
                 <Link to='/metodos/fibonacci'>
                     Busca de Fibonacci
                 </Link>
-                <Divider />
                 <Link to='/metodos/bissecao'>
                     Bisseção
                 </Link>
-                <Divider />
                 <Link to='/metodos/newton'>
                     Newton
                 </Link>
