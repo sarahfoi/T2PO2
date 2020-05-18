@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Header from './components/Header';
 import Home from './pages/Home';
+import ComoUsar from './pages/ComoUsar';
 import Uniforme from './pages/Uniforme';
 import Bissecao from './pages/Bissecao';
 import Dicotomica from './pages/Dicotomica';
@@ -17,6 +18,7 @@ export default function Routes(){
             <Header/>
             <Switch>
                 <Route path='/' exact component={Home}/>
+                <Route path='/pages/ComoUsar' component={ComoUsar}/> 
                 <Route path='/metodos/uniforme' component={Uniforme}/>
                 <Route path='/metodos/dicotomica' component={Dicotomica}/>
                 <Route path='/metodos/aurea' component={SecaoAurea}/>

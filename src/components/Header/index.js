@@ -30,7 +30,7 @@ export default function Header(){
 
         <Navbar
             alignLinks="right"
-            brand={<a className="brand-logo" href="#">Programação Não Linear: Monovariável</a>}
+            brand={<Link to='/' style={{fontSize:20}}> Programação Não Linear: Monovariável</Link>}
             options={{
                 draggable: false,
                 edge: 'left',
@@ -42,10 +42,13 @@ export default function Header(){
                 outDuration: 200,
                 preventScrolling: true
               }}
-            style={{paddingLeft:20, paddingRight:20}}    
+            style={{paddingLeft:40, paddingRight:40}}    
+            className="blue-grey darken-4" 
         >
-            <NavItem href="">
-                Sobre
+            <NavItem>
+                <Link to='/pages/ComoUsar'>
+                    Como Usar
+                </Link>
             </NavItem>
             <Dropdown
                 id="Dropdown"
@@ -66,30 +69,30 @@ export default function Header(){
                 }}
                 trigger={<a href="#!">Métodos{' '}<Icon right>arrow_drop_down</Icon></a>}
             >
-                <a href="/metodos/uniforme">
+                <Link to='/metodos/uniforme'>
                     Busca Uniforme
-                </a>
+                </Link>
                 <Divider />
-                <a href="/metodos/dicotomica">
+                <Link to='/metodos/dicotomica'>
                     Busca Dicotômica
-                </a>
+                </Link>
                 <Divider />
-                <a href="/metodos/aurea">
+                <Link to='/metodos/aurea'>
                     Seção Áurea
-                </a>
+                </Link>
                 <Divider />
-                <a href="/metodos/fibonacci">
+                <Link to='/metodos/fibonacci'>
                     Busca de Fibonacci
-                </a>
+                </Link>
                 <Divider />
-                <a href="/metodos/bissecao">
+                <Link to='/metodos/bissecao'>
                     Bisseção
-                </a>
+                </Link>
                 <Divider />
-                <a href="/metodos/newton">
+                <Link to='/metodos/newton'>
                     Newton
-                </a>
-            </Dropdown>
+                </Link>
+            </Dropdown> 
         </Navbar>
     );
 }
