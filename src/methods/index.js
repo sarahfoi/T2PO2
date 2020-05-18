@@ -3,6 +3,7 @@ import { evaluate } from "mathjs";
 import Uniforme from "./Uniforme";
 import Bissecao from "./Bissecao";
 import Fibonacci from "./Fibonacci";
+import Aurea from './Aurea';
 import Dicotomica from "./Dicotomica";
 import Newton from "./Newton";
 import Pontos from './Pontos';
@@ -13,6 +14,7 @@ const metodos = {
   Bissecao,
   Fibonacci,
   Dicotomica,
+  Aurea,
   Newton,
   Pontos
 };

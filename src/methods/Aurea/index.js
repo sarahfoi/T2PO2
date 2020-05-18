@@ -3,6 +3,8 @@ export default async({f,a,b,e}) => new Promise((resolve,reject) =>{
     let beta=0.382;
     let x=a;
     let y=b;
+    let fm;
+    let fl;
     let micra = x + (y-x)*alfa;
     let lambda= x + (y-x)*beta;
     while ((b-a)>e) {
@@ -15,7 +17,7 @@ export default async({f,a,b,e}) => new Promise((resolve,reject) =>{
         }
         else {
             y=lambda;
-            labda=micra;
+            lambda=micra;
             micra = x + (y-x)*alfa;
         }
     }
