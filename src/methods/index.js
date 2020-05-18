@@ -5,6 +5,7 @@ import Bissecao from "./Bissecao";
 import Fibonacci from "./Fibonacci";
 import Dicotomica from "./Dicotomica";
 import Newton from "./Newton";
+import Pontos from './Pontos';
 
 
 const metodos = {
@@ -12,7 +13,8 @@ const metodos = {
   Bissecao,
   Fibonacci,
   Dicotomica,
-  Newton
+  Newton,
+  Pontos
 };
 
 export default (metodo, { f,a,b, ...args }) =>{

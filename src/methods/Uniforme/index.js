@@ -6,7 +6,7 @@ export default async({f,a,b,d}) => new Promise((resolve,reject) => {
     let ant = f(x);
     let fx=0;
     let flag= false;
-    while(x<=b && i < 10000){
+    while(x<=b+0.0001 && i < 10000){
         x+=d;
         fx = f(x);
         if(fx > ant){
