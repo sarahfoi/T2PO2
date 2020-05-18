@@ -170,7 +170,5 @@ export default function Aurea() {
         </CardPanel>
       </Col>
     </Row>
-
-    // </div>
   );
 }

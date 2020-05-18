@@ -48,7 +48,6 @@ export default function Fibonacci() {
   });
 
   return (
-    //  <div class="container">
 
     <Row style={{ marginLeft: 30, marginRight: 30 }}>
       <Col s={12} m={12} l={12}> 
@@ -170,7 +169,5 @@ export default function Fibonacci() {
         </CardPanel>
       </Col>
     </Row>
-
-    //  </div>
   );
 }

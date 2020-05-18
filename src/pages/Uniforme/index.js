@@ -46,7 +46,6 @@ export default function Uniforme() {
     },
   });
   return (
-    //  <div class="container">
     <Row style={{ marginLeft: 30, marginRight: 30 }}>
       <Col s={12} m={12} l={12}> 
         <h4 style={{fontWeight:"bold"}}>Busca Uniforme</h4>
@@ -167,6 +166,5 @@ export default function Uniforme() {
         </CardPanel>
       </Col>
     </Row>
-    //   </div>
   );
 }
