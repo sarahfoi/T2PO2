@@ -47,7 +47,10 @@ export default function Uniforme() {
   });
   return (
     //  <div class="container">
-    <Row style={{ marginTop: 30, marginLeft: 30, marginRight: 30 }}>
+    <Row style={{ marginLeft: 30, marginRight: 30 }}>
+      <Col s={12} m={12} l={12}> 
+        <h4 style={{fontWeight:"bold"}}>Busca Uniforme</h4>
+      </Col>
       <Col s={4} m={4} l={4}>
         <CardPanel
           name="formulario"
