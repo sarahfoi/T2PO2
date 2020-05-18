@@ -38,21 +38,17 @@ export default function Home(){
                                 <h3 style={{fontWeight:"bold"}}>Alunos</h3>
                             </Col>
                             <Col s={4} m={4} l={4}>
-                                <Card 
-                                header={<CardTitle image='/img/joão.jpg'></CardTitle>} className="teal white-text">
-                                    <p>João Otávio Frediani</p>
+                                <Card header={<CardTitle image={require ('../../assets/joão.jpg')}>João Otávio Frediani</CardTitle>} className="teal white-text">
                                     <p>RA 181020289</p>
                                 </Card>
                             </Col>
                             <Col s={4} m={4} l={4}>
-                                <Card header={<CardTitle image="/img/mauricio.jpg"></CardTitle>} className="teal white-text">
-                                    <p>Mauricio Scarelli Arantes</p>
+                                <Card header={<CardTitle image={require ('../../assets/mauricio.jpg')}>Maurício Scarelli</CardTitle>} className="teal white-text">
                                     <p>RA 181020904</p>
                                 </Card>
                             </Col>
-                            <Col s={4} m={4} l={4}>
-                                <Card header={<CardTitle image="/img/sarah.jpg"></CardTitle>} className="teal white-text">
-                                    <p>Sarah Campos</p>
+                            <Col s={4} m={4} l={4}> 
+                                <Card header={<CardTitle image={require ('../../assets/sarah.jpg')}>Sarah Campos</CardTitle>} className="teal white-text">
                                     <p>RA 181023822</p>
                                 </Card>
                             </Col>
