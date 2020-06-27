@@ -31,20 +31,26 @@ export default function Dicotomica() {
       d: yup.number().required("Obrigatório").moreThan(0).label("Δ"),
       e: yup.number().required("Obrigatório").moreThan(0).label("ε"),
     }),
-    onSubmit: async (values) => {
-      try {
-        setResp(false);
-        setErr("");
-        const ret = await metodos("Dicotomica", values);
-        setMin(ret);
-        const p = await metodos("Pontos", values);
-        setDots(p);
-        console.log(ret);
-      } catch ({ ret }) {
-        setErr(ret);
-      } finally {
-        setResp(true);
-      }
+    onSubmit: (values) => {
+      setResp(false);
+      setErr("");
+      metodos("Dicotomica", values)
+        .then((value) => {
+          console.log("then: " + value);
+          setMin(value);
+        })
+        .catch((reason) => {
+          if(reason === '') reason = 'Tempo limite de cálculo excedido';
+          console.log(reason);
+          setErr(reason);
+        })
+        .finally(() => {
+          console.log("finally");
+          setResp(true);
+        });
+      metodos("Pontos", values).then((val) => {
+        setDots(val);
+      });
     },
   });
 

@@ -29,20 +29,25 @@ export default function Uniforme() {
       b: yup.number().required("Obrigatório").label("b"),
       d: yup.number().required("Obrigatório").moreThan(0).label("Δ"),
     }),
-    onSubmit: async (values) => {
-      try {
-        setResp(false);
-        setErr("");
-        const ret = await metodos("Uniforme", values);
-        setMin(ret);
-        const p = await metodos("Pontos", values);
-        setDots(p);
-        console.log(ret);
-      } catch ({ ret }) {
-        setErr(ret);
-      } finally {
-        setResp(true);
-      }
+    onSubmit: (values) => {
+      setResp(false);
+      setErr("");
+      metodos("Uniforme", values,3000)
+        .then((value) => {
+          console.log("then: " + value);
+          setMin(value);
+        })
+        .catch((reason) => {
+          console.log(reason);
+          setErr(reason);
+        })
+        .finally(() => {
+          console.log("finally");
+          setResp(true);
+        });
+      metodos("Pontos", values,10000).then((val) => {
+        setDots(val);
+      });
     },
   });
   return (

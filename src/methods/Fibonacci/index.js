@@ -2,7 +2,6 @@ import { round } from "mathjs";
 
 export default async ({ f, a, b, e }) =>
   new Promise((resolve, reject) => {
-
     //Sequencia de Fibonacci e calculo de Fn
     let fn = (b - a) / e;
     let fibo = [1, 1];
@@ -18,6 +17,7 @@ export default async ({ f, a, b, e }) =>
     let fu = 0;
     let fl = 0;
 
+
     for (let k = 0; k < fn; k++) {
       u = esq + (fibo[fn - k - 2] / fibo[fn - k]) * (dir - esq);
       l = esq + (fibo[fn - k - 1] / fibo[fn - k]) * (dir - esq);
@@ -26,6 +26,9 @@ export default async ({ f, a, b, e }) =>
       if (fu > fl) esq = u;
       else dir = l;
     }
-    resolve(round((esq + dir) / 2,5));
-    reject(new Error("Impossível encontrar o mínimo da função"));
+
+    
+    if (typeof esq !== "undefined" && typeof dir !== "undefined")
+      resolve(round((esq + dir) / 2, 5));
+    reject("Não foi possível encontrar o mínimo");
   });

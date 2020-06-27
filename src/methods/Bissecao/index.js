@@ -1,4 +1,4 @@
-import { derivative,ceil,log2 } from "mathjs";
+import { derivative, ceil, log2, abs } from "mathjs";
 
 export default async ({ fstring, f, a, b, e }) =>
   new Promise((resolve, reject) => {
@@ -6,14 +6,16 @@ export default async ({ fstring, f, a, b, e }) =>
     let flinha = derivative(fstring, "x");
     let x = a;
     let y = b;
-    console.log(flinha);
-    console.log(flinha.evaluate({ x: x }));
+
     for (let i = 0; i < n; i++) {
-      if (flinha.evaluate({ x: (x + y) / 2 }) > 0) 
-        y = (x + y) / 2;
-      else 
-        x = (x + y) / 2;
+      const d = flinha.evaluate({ x: (x + y) / 2 });
+      if(abs(d) < 0.00000001) break;
+      else if (d > 0) y = (x + y) / 2;
+      else x = (x + y) / 2;
     }
-    resolve((x + y) / 2);
-    reject(new Error("Não foi possível encontrar o mínimo"));
+
+
+    if (typeof x !== "undefined" && typeof y !== "undefined")
+      resolve((x + y) / 2);
+    reject("Não foi possível encontrar o mínimo");
   });

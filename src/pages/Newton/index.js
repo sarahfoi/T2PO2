@@ -30,28 +30,33 @@ export default function Newton() {
       //d: yup.number().required("Obrigatório").moreThan(0).label("Δ"),
       e: yup.number().required("Obrigatório").moreThan(0).label("ε"),
     }),
-    onSubmit: async (values) => {
-      try {
-        setResp(false);
-        setErr("");
-        const ret = await metodos("Newton", values);
-        setMin(ret);
-        const p = await metodos("Pontos", values);
-        setDots(p);
-        console.log(ret);
-      } catch ({ ret }) {
-        setErr(ret);
-      } finally {
-        setResp(true);
-      }
+    onSubmit: (values) => {
+      setResp(false);
+      setErr("");
+      metodos("Newton", values)
+        .then((value) => {
+          console.log("then: " + value);
+          setMin(value);
+        })
+        .catch((reason) => {
+          if(reason === '') reason = 'Tempo limite de cálculo excedido';
+          console.log(reason);
+          setErr(reason);
+        })
+        .finally(() => {
+          console.log("finally");
+          setResp(true);
+        });
+      metodos("Pontos", values).then((val) => {
+        setDots(val);
+      });
     },
   });
 
   return (
-
-    <Row style={{marginLeft: 30, marginRight: 30 }}>
-      <Col s={12} m={12} l={12}> 
-        <h4 style={{fontWeight:"bold"}}>Newton</h4>
+    <Row style={{ marginLeft: 30, marginRight: 30 }}>
+      <Col s={12} m={12} l={12}>
+        <h4 style={{ fontWeight: "bold" }}>Newton</h4>
       </Col>
       <Col s={4} m={4} l={4}>
         <CardPanel
@@ -169,6 +174,5 @@ export default function Newton() {
         </CardPanel>
       </Col>
     </Row>
-
   );
 }
