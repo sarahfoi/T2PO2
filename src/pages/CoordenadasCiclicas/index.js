@@ -130,7 +130,7 @@ export default function CoordenadasCiclicas() {
                 <p style={{ fontSize: 24 }}>
                   {resp ? (
                     <span className="white-text" name="resposta-x">
-                      {err === "" ? "Mínimo: x* = (" + min.toString().replaceAll(',',' ') +")" : err}
+                      {err === "" ? "Mínimo: x* = (" + min.toString().replace(new RegExp(',','gi'),' ') +")" : err}
                     </span>
                   ) : null}
                 </p>
