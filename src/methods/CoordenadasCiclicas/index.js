@@ -9,8 +9,7 @@ import {
   index,
   multiply,
   subtract,
-  sum,
-  pow,
+  sum
 } from "mathjs";
 
 export default async ({ f, xinicial, newton, variaveis, e }) =>
@@ -28,7 +27,7 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     console.log(x);
     let xprox;
     do {
-      if (k === 1000) reject("Não foi possível calcular o mínimo");
+      if (k === 200) reject("Não foi possível calcular o mínimo");
       if (k > 0) x = [...xprox];
       y = [...x]; //y1 = xk
       console.log("k = " + k, x);
