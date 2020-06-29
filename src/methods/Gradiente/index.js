@@ -1,8 +1,4 @@
-import Newton from "../../pages/Newton";
-import {
-  derivative,
-  round
-} from "mathjs";
+import { derivative, round } from "mathjs";
 
 const norma = (gradiente, escopo) => {
   //Calcula norma e direcao, retorna em um objeto
@@ -34,10 +30,11 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     let x = [...xinicial];
     console.log(x);
     let obj;
-    while (((obj = norma(g, variaveis(x), d)), obj.norma > e)) {
-      if (k === 200 || typeof d === "undefined")
+    while (((obj = norma(g, variaveis(x))), obj.norma > e)) {
+      if (k === 200 || typeof obj.direcao === "undefined") {
         reject("Não foi possível calcular o mínimo");
-
+        break;
+      }
       d = [...obj.direcao];
       console.log("direcao: " + d);
       console.log("k = " + k, x);
@@ -56,9 +53,10 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
       r = newton(f2, 1, 0.01); // encontra lambda
 
       console.log(r);
-      if (typeof r === "undefined")
+      if (typeof r === "undefined") {
         reject("Não foi possível calcular o mínimo");
-
+        break;
+      }
       for (let i = 0; i < n; i++) x[i] += r * d[i]; // xk+1 = xk + lambda*dk
 
       console.log(x);
@@ -66,5 +64,5 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     }
     if (typeof d === "undefined") reject("Não foi possível calcular o mínimo");
     console.log("x*= " + x);
-    resolve(x.map((el)=>round(el,5)));
+    resolve(x.map((el) => round(el, 5)));
   });

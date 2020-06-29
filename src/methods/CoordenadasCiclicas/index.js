@@ -1,4 +1,3 @@
-import Newton from "../../pages/Newton";
 import {
   sqrt,
   add,
@@ -9,7 +8,8 @@ import {
   index,
   multiply,
   subtract,
-  sum
+  sum,
+  round
 } from "mathjs";
 
 export default async ({ f, xinicial, newton, variaveis, e }) =>
@@ -27,7 +27,10 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     console.log(x);
     let xprox;
     do {
-      if (k === 200) reject("Não foi possível calcular o mínimo");
+      if (k === 200) {
+        reject("Não foi possível calcular o mínimo");
+        break;
+      }
       if (k > 0) x = [...xprox];
       y = [...x]; //y1 = xk
       console.log("k = " + k, x);
@@ -49,8 +52,10 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
         //math.add(array, matrix)
         r = newton(f2, 1, 0.01);
         console.log(r);
-        if (typeof r === "undefined")
+        if (typeof r === "undefined") {
           reject("Não foi possível calcular o mínimo");
+          break;
+        }
         y = add(y, multiply(r, squeeze(column(d, i - 1)))); //yj+1 = yj+Ljdj
         y = y._data;
         console.log(y);
@@ -59,5 +64,5 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
       k++;
     } while (sqrt(sum(multiply(subtract(xprox, x), subtract(xprox, x)))) > e);
     console.log("x*= " + xprox);
-    resolve(xprox);
+    resolve(xprox.map((el) => round(el, 5)));
   });
