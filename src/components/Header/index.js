@@ -9,7 +9,7 @@ export default function Header(){
 
         <Navbar
             alignLinks="right"
-            brand={<Link to='/' style={{fontSize:20}}> Programação Não Linear: Monovariável</Link>}
+            brand={<Link to='/' style={{fontSize:20}}> Programação Não Linear: Multivariável Irrestrito</Link>}
             options={{
                 draggable: false,
                 edge: 'left',
@@ -48,22 +48,25 @@ export default function Header(){
                 }}
                 trigger={<a href="#!">Métodos{' '}<Icon right>arrow_drop_down</Icon></a>}
             >
-                <Link to='/metodos/uniforme'>
-                    Busca Uniforme
+                <Link to='/metodos/coordenadasciclicas'>
+                    Coordenadas Cíclicas
                 </Link>
-                <Link to='/metodos/dicotomica'>
-                    Busca Dicotômica
+                <Link to='/metodos/davidonfletcherpowell'>
+                    Davidon-Fletcher-Powell (DFP)
                 </Link>
-                <Link to='/metodos/aurea'>
-                    Seção Áurea
+                <Link to='/metodos/fletcherandreeves'>
+                    Fletcher And Reeves
                 </Link>
-                <Link to='/metodos/fibonacci'>
-                    Busca de Fibonacci
+                <Link to='/metodos/gradiente'>
+                    Gradiente
                 </Link>
-                <Link to='/metodos/bissecao'>
-                    Bisseção
+                <Link to='/metodos/gradienteconjugadogeneralizado'>
+                    Gradiente Conjugado Generalizado
                 </Link>
-                <Link to='/metodos/newton'>
+                <Link to='/metodos/hookeandjeeves'>
+                    Hooke And Jeeves
+                </Link>
+                <Link to='/metodos/newtonirrestrito'>
                     Newton
                 </Link>
             </Dropdown> 

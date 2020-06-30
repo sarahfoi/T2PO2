@@ -16,7 +16,7 @@ const metodos = {
   GradienteConjugado,
   HookeAndJeeves,
   NewtonIrrestrito
-};
+}; 
 
 const variaveis = (x)=>{
   //separa os identificadores
@@ -34,10 +34,15 @@ const variaveis = (x)=>{
 }
 
 const newton = (fstring, a, e) => {
+  console.log("fstring: "+fstring);
+  console.log("a: "+a);
   let flinha = derivative(fstring, "x");
+  console.log("flinha: "+flinha);
   let f2linha = derivative(flinha, "x");
+  console.log("f2linha: "+f2linha);
   let x = a; //x0 = a
   let fxlinha = flinha.evaluate({ x: x });
+  console.log("fxlinha: "+fxlinha);
   let fx2linha;
   let i = 0;
   let z, fzlinha;
@@ -47,10 +52,13 @@ const newton = (fstring, a, e) => {
   do {
     if(i === 10000) return undefined;
     fx2linha = f2linha.evaluate({ x: x });
+    console.log("fx2linha: "+fx2linha);
     if (abs(fx2linha) < 0.00000001)
       break;
     z = x - fxlinha / fx2linha;
+    console.log("z: "+z);
     fzlinha = flinha.evaluate({ x: z });
+    console.log("fzlinha: "+fzlinha);
     if (abs(fzlinha) <= e) break;
     if (abs(z - x) / max(abs(z), 1) <= e) break;
     x = z;  

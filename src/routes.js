@@ -4,7 +4,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import ComoUsar from './pages/ComoUsar';
-import Newton from './pages/Newton';
 import Coordenadas from './pages/CoordenadasCiclicas';
 import Davidon from './pages/DavidonFletcherPowell';
 import Fletcher from './pages/FletcherAndReeves';
@@ -20,8 +19,7 @@ export default function Routes(){
             <Header/>
             <Switch>
                 <Route path='/' exact component={Home}/>
-                <Route path='/pages/ComoUsar' component={ComoUsar}/> 
-                <Route path='/metodos/newton' component={Newton}/>
+                <Route path='/pages/ComoUsar' component={ComoUsar}/>
                 <Route path='/metodos/coordenadasciclicas' component={Coordenadas}/>
                 <Route path='/metodos/davidonfletcherpowell' component={Davidon}/>
                 <Route path='/metodos/fletcherandreeves' component={Fletcher}/>

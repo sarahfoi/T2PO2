@@ -20,14 +20,16 @@ export default function Home(){
                                 <h3 style={{fontWeight:"bold"}}>Sobre o trabalho</h3>
                             </Col>
                             <Col s={12} m={12} l={12}>
-                                <h6>Este trabalho objetiva a resolução de problemas envolvendo funções não-lineares monovariáveis pelos métodos:</h6>
+                                <h6>Este trabalho objetiva a resolução de problemas envolvendo funções não-lineares multivariáveis irrestritas pelos métodos:</h6>
                             </Col>
                             <Col s={11} m={11} l={11} offset="s1 m1 l1">
-                                <h6><p>● Busca Uniforme</p></h6>
-                                <h6><p>● Busca Dicotômica</p></h6>
-                                <h6><p>● Seção Áurea</p></h6>
-                                <h6><p>● Busca de Fibonacci</p></h6>
-                                <h6><p>● Bisseção</p></h6>
+                                
+                                <h6><p>● Coordenadas Cíclicas</p></h6>
+                                <h6><p>● Davidon-Fletcher-Powell (DFP)</p></h6>
+                                <h6><p>● Fletcher And Reeves</p></h6>
+                                <h6><p>● Gradiente</p></h6>
+                                <h6><p>● Gradiente Conjugado Generalizado</p></h6>
+                                <h6><p>● Hooke And Jeeves</p></h6>  
                                 <h6><p>● Newton</p></h6>  
                             </Col>
                             <Col s={12} m={12} l={12}>
