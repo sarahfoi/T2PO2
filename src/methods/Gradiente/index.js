@@ -50,7 +50,7 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
       }
       console.log(f2);
 
-      r = newton(f2, 1, 0.01); // encontra lambda
+      r = newton(f2, 0, 0.000001); // encontra lambda
 
       console.log(r);
       if (typeof r === "undefined") {

@@ -26,7 +26,7 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     let M;
     let y=[...x];
     while(v) {
-      if (k === 200) {
+      if (k >= 200) {
         reject("Não foi possível calcular o mínimo");
         break;
       }
