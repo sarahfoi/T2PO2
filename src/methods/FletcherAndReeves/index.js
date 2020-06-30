@@ -80,7 +80,7 @@ import {
               );
           }
           console.log("f2: "+f2);
-          lambda = newton(f2, 0, 0.0001); //lambda = min f(xk+lambda*dk)
+          lambda = newton(f2, 0, 0.000001); //lambda = min f(xk+lambda*dk)
           console.log("lambda: "+lambda);
           if (typeof lambda === "undefined") {
             reject("Não foi possível calcular o mínimo");

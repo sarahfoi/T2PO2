@@ -24,14 +24,13 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     let xprox;
     let v=true;
     let M;
-    let y;
+    let y=[...x];
     while(v) {
       if (k === 200) {
         reject("Não foi possível calcular o mínimo");
         break;
       }
       if (k > 0) x = [...xprox];
-      y = [...x];
       for (let i = 1; i <= n; i++) {
         f2 = f;
         for (let j = 1; j <= n; j++) {
@@ -45,9 +44,8 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
               ")"
           );
         }
-        console.log(k,i,f2);
-        r = newton(f2, 1, 0.01);
-        console.log(r);
+        r = newton(f2, 0, 0.000001);
+        console.log('lambda1:'+r);
         if (typeof r === "undefined") {
           reject("Não foi possível calcular o mínimo");
           break;
@@ -58,8 +56,10 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
       xprox = [...y];
       k++;
       if (sqrt(sum(multiply(subtract(xprox, x), subtract(xprox, x)))) > e){
+        console.log('x:'+x);
+        console.log('xprox:'+xprox);
         M=subtract(xprox, x);
-        console.log(M);
+        console.log('M:'+M);
         f2 = f;
         for (let j = 1; j <= n; j++) {
           aux = "x" + j;
@@ -72,15 +72,13 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
               ")"
           );
         }
-        console.log(f2);
-        r = newton(f2, 1, 0.01);
-        console.log(k,r);
+        r = newton(f2, 0, 0.000001);
+        console.log('lambda2:'+r);
         if (typeof r === "undefined") {
           reject("Não foi possível calcular o mínimo");
           break;
         }
         y = [...add(y, multiply(r,M))];
-        xprox = [...y];
       }
       else{
         v=false;

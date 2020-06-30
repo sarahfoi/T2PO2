@@ -46,7 +46,7 @@ const newton = (fstring, a, e) => {
   let fx2linha;
   let i = 0;
   let z, fzlinha;
-  //console.log(abs(fxlinha), e);
+  console.log(abs(fxlinha), e);
   if (abs(fxlinha) <= e)
     return undefined;
   do {
