@@ -20,24 +20,19 @@ export default function ComoUsar() {
                 <Col s={11} l={11} m={11} offset={"s1 m1 l1"} style={{textAlign:"justify"}}>
                     <h6><p>
                         <span style={{fontWeight:"bold"}} className="cyan-text text-darken-1">Função:</span> é a função que você deseja minimizar. 
-                        Para saber como escrever, verifique as tabelas, de tradução livre, na sessão abaixo (Sintaxes) ou veja a <a href="http://mathjs.org/docs/expressions/syntax.html">documentação da biblioteca Math.js</a>
+                        Para saber como escrever, verifique as tabelas, de tradução livre, na sessão abaixo (Sintaxes). <b>Observações: nomeie as variáveis como xj, com j variando de 1 a n; use operações explicítas entre as variáveis (exemplo: não escreva x1x2 e sim x1*x2); use ponto para números com casas decimais.</b>
                     </p></h6>
                     <h6><p>
-                        <span style={{fontWeight:"bold"}} className="cyan-text text-darken-1">a:</span> é o limite inferior do intervalo [a,b].
+                        <span style={{fontWeight:"bold"}} className="cyan-text text-darken-1">x0:</span> é o ponto inicial. Deve ser escrito entre parênteses/colchetes e as componentes separadas por espaço em branco. Exemplo: (0  0).
+                        <b>Use ponto para números com casas decimais.</b>
                     </p></h6>
                     <h6><p>
-                        <span style={{fontWeight:"bold"}} className="cyan-text text-darken-1">b:</span> é o limite superior do intervalo [a,b].
-                    </p></h6>
-                    <h6><p>
-                        <span style={{fontWeight:"bold"}} className="cyan-text text-darken-1">Δ:</span> é o passo. Deve ser maior que zero.
-                    </p></h6>
-                    <h6><p>
-                        <span style={{fontWeight:"bold"}} className="cyan-text text-darken-1">ε:</span> é o erro. Deve ser maior que zero.
+                        <span style={{fontWeight:"bold"}} className="cyan-text text-darken-1">ε:</span> é a precisão. Deve ser maior que zero. <b>Use vírgula para números com casas decimais.</b>
                     </p></h6>
                 </Col>
                 <Col s={12} l={12} m={12} style={{marginBottom: 30,textAlign:"justify"}}>
                     <h6><p>04. Clique no botão "calcular mínimo".</p></h6>
-                    <h6><p>05. O gráfico e a resposta devem aparecer no card da direita.</p></h6>
+                    <h6><p>05. A resposta deve aparecer no card da direita.</p></h6>
                 </Col>
                 <Col s={12} l={12} m={12} style={{marginBottom: 30,textAlign:"justify"}}>
                     <h5 className="cyan-text text-darken-1" style={{fontWeight:"bold"}}>Sintaxes</h5>

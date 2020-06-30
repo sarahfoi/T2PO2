@@ -46,7 +46,7 @@ export default function CoordenadasCiclicas() {
   return (
     <Row style={{ marginLeft: 30, marginRight: 30 }}>
       <Col s={12} m={12} l={12}>
-        <h4 style={{ fontWeight: "bold" }}>Coordendas Cíclicas</h4>
+        <h4 style={{ fontWeight: "bold" }}>Coordenadas Cíclicas</h4>
       </Col>
       <Col s={4} m={4} l={4}>
         <CardPanel
