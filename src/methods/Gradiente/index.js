@@ -30,9 +30,21 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     let x = [...xinicial];
     console.log(x);
     let obj;
+    const time = Date.now();//parada de execução por tempo
+
     while (((obj = norma(g, variaveis(x))), obj.norma > e)) {
       if (k === 200 || typeof obj.direcao === "undefined") {
         reject("Não foi possível calcular o mínimo");
+        break;
+      }
+      if (Date.now() - time >= 5000) {
+        reject(
+          "Tempo Excedido, x mais próximo: (" +
+            x.map((el) => round(el, 5))
+              .toString()
+              .replace(new RegExp(",", "gi"), " ") +
+            ")"
+        );
         break;
       }
       d = [...obj.direcao];
@@ -50,12 +62,15 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
       }
       console.log(f2);
 
-      r = newton(f2, 0, 0.000001); // encontra lambda
+      r = newton(f2, 0); // encontra lambda
 
       console.log(r);
       if (typeof r === "undefined") {
-        reject("Não foi possível calcular o mínimo");
-        break;
+        r = newton(f2, 2);
+        if (typeof r === "undefined") {
+          reject("Não foi possível calcular o mínimo");
+          break;
+        }
       }
       for (let i = 0; i < n; i++) x[i] += r * d[i]; // xk+1 = xk + lambda*dk
 

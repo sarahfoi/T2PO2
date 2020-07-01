@@ -33,9 +33,10 @@ const variaveis = (x)=>{
   return escopo;
 }
 
-const newton = (fstring, a, e) => {
+const newton = (fstring, a) => {
   //console.log("fstring: "+fstring);
   //console.log("a: "+a);
+  const e = 0.000001;
   let flinha = derivative(fstring, "x");
   //console.log("flinha: "+flinha);
   let f2linha = derivative(flinha, "x");
@@ -47,13 +48,11 @@ const newton = (fstring, a, e) => {
   let i = 0;
   let z, fzlinha;
   //console.log(abs(fxlinha), e);
-  if (abs(fxlinha) <= e)
-    return undefined;
   do {
     if(i === 10000) return undefined;
     fx2linha = f2linha.evaluate({ x: x });
     //console.log("fx2linha: "+fx2linha);
-    if (abs(fx2linha) < 0.00000001)
+    if (abs(fx2linha) < 0.00000000001)
       break;
     z = x - fxlinha / fx2linha;
     //console.log("z: "+z);
@@ -65,7 +64,7 @@ const newton = (fstring, a, e) => {
     fxlinha = fzlinha;
     i++;
   } while (1);
-  if (typeof z !== "undefined") return(round(z, 5));
+  if (typeof z !== "undefined") return(z);
   else return undefined;
 }
 

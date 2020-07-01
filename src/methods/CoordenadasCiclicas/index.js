@@ -9,7 +9,7 @@ import {
   multiply,
   subtract,
   sum,
-  round
+  round,
 } from "mathjs";
 
 export default async ({ f, xinicial, newton, variaveis, e }) =>
@@ -26,12 +26,23 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     let x = [...xinicial];
     console.log(x);
     let xprox;
+    const time = Date.now();//parada de execução por tempo
     do {
-      if (k === 200) {
+      if (k === 500) {
         reject("Não foi possível calcular o mínimo");
         break;
       }
       if (k > 0) x = [...xprox];
+      if (Date.now() - time >= 5000) {
+        reject(
+          "Tempo Excedido, x mais próximo: (" +
+            x.map((el) => round(el, 5))
+              .toString()
+              .replace(new RegExp(",", "gi"), " ") +
+            ")"
+        );
+        break;
+      }
       y = [...x]; //y1 = xk
       console.log("k = " + k, x);
       for (let i = 1; i <= n; i++) {
@@ -50,11 +61,15 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
           console.log(f2);
         }
         //math.add(array, matrix)
-        r = newton(f2, 1, 0.01);
+        r = newton(f2, 0);
         console.log(r);
         if (typeof r === "undefined") {
-          reject("Não foi possível calcular o mínimo");
-          break;
+          r = newton(f2, 2);
+          console.log(r);
+          if (typeof r === "undefined") {
+            reject("Não foi possível calcular o mínimo");
+            break;
+          }
         }
         y = add(y, multiply(r, squeeze(column(d, i - 1)))); //yj+1 = yj+Ljdj
         y = y._data;

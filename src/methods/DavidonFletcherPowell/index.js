@@ -49,9 +49,20 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     let escopo = variaveis(x);
     let S = S0;
     let gx = gradienteX(g, escopo);
+    const time = Date.now();//parada de execução por tempo
     while (norma(g, escopo) > e) {
       if (i === 200 || typeof gx === "undefined") {
         reject("Não foi possível calcular o mínimo");
+        break;
+      }
+      if (Date.now() - time >= 5000) {
+        reject(
+          "Tempo Excedido, x mais próximo: (" +
+            x.map((el) => round(el, 5))
+              .toString()
+              .replace(new RegExp(",", "gi"), " ") +
+            ")"
+        );
         break;
       }
       d = multiply(S, gx)._data.map((el) => -el);
@@ -68,11 +79,15 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
         );
       }
 
-      r = newton(f2, 1, 0.0001);
+      r = newton(f2, 0);
       console.log(r);
       if (isNaN(r)) {
-        reject("Não foi possível calcular o mínimo");
-        break;
+        r = newton(f2, 2);
+        console.log(r);
+        if (isNaN(r)) {
+          reject("Não foi possível calcular o mínimo");
+          break;
+        }
       }
 
       x = x.map((v, i) => v + r * d[i]);

@@ -1,4 +1,3 @@
-
 import {
   sqrt,
   add,
@@ -10,7 +9,7 @@ import {
   multiply,
   subtract,
   sum,
-  round
+  round,
 } from "mathjs";
 
 export default async ({ f, xinicial, newton, variaveis, e }) =>
@@ -19,15 +18,28 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     let n = xinicial.length;
     let x = [...xinicial];
     let d = identity(n);
-    let k=0,r;
+    let k = 0,
+      r;
     let aux;
     let xprox;
-    let v=true;
+    let v = true;
     let M;
-    let y=[...x];
-    while(v) {
+    let y = [...x];
+    const time = Date.now();//parada de execução por tempo
+
+    while (v) {
       if (k >= 200) {
         reject("Não foi possível calcular o mínimo");
+        break;
+      }
+      if (Date.now() - time >= 5000) {
+        reject(
+          "Tempo Excedido, x mais próximo: (" +
+            x.map((el) => round(el, 5))
+              .toString()
+              .replace(new RegExp(",", "gi"), " ") +
+            ")"
+        );
         break;
       }
       if (k > 0) x = [...xprox];
@@ -44,44 +56,45 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
               ")"
           );
         }
-        r = newton(f2, 0, 0.000001);
-        console.log('lambda1:'+r);
+        r = newton(f2, 0);
+        console.log("lambda1:" + r);
         if (typeof r === "undefined") {
-          reject("Não foi possível calcular o mínimo");
-          break;
+          r = newton(f2, 2);
+          if (typeof r === "undefined") {
+            reject("Não foi possível calcular o mínimo");
+            break;
+          }
         }
         y = add(y, multiply(r, squeeze(column(d, i - 1))));
-        y=y._data;
+        y = y._data;
       }
       xprox = [...y];
       k++;
-      if (sqrt(sum(multiply(subtract(xprox, x), subtract(xprox, x)))) > e){
-        console.log('x:'+x);
-        console.log('xprox:'+xprox);
-        M=subtract(xprox, x);
-        console.log('M:'+M);
+      if (sqrt(sum(multiply(subtract(xprox, x), subtract(xprox, x)))) > e) {
+        console.log("x:" + x);
+        console.log("xprox:" + xprox);
+        M = subtract(xprox, x);
+        console.log("M:" + M);
         f2 = f;
         for (let j = 1; j <= n; j++) {
           aux = "x" + j;
           f2 = f2.replace(
             new RegExp(aux, "gi"),
-            "(" +
-              y[j - 1].toString() +
-              "+x*" +
-              M[j-1] +
-              ")"
+            "(" + y[j - 1].toString() + "+x*" + M[j - 1] + ")"
           );
         }
-        r = newton(f2, 0, 0.000001);
-        console.log('lambda2:'+r);
+        r = newton(f2, 0);
+        console.log("lambda2:" + r);
         if (typeof r === "undefined") {
-          reject("Não foi possível calcular o mínimo");
-          break;
+          r = newton(f2, 2);
+          if (typeof r === "undefined") {
+            reject("Não foi possível calcular o mínimo");
+            break;
+          }
         }
-        y = [...add(y, multiply(r,M))];
-      }
-      else{
-        v=false;
+        y = [...add(y, multiply(r, M))];
+      } else {
+        v = false;
       }
     }
     resolve(xprox.map((el) => round(el, 5)));

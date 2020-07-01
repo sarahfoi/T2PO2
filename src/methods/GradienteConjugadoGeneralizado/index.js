@@ -50,12 +50,23 @@ export default async ({ f, xinicial, newton, variaveis, e }) =>
     let x = [...xinicial];
     console.log(x);
     let escopo = variaveis(x);
+    const time = Date.now();//parada de execução por tempo
 
     while (norma(g, escopo) > e) {
       let gx = gradienteX(g, escopo);
       d = gx.map((el) => -el);
       if (k === 200 || typeof d === "undefined") {
         reject("Não foi possível calcular o mínimo");
+        break;
+      }
+      if (Date.now() - time >= 5000) {
+        reject(
+          "Tempo Excedido, x mais próximo: (" +
+            x.map((el) => round(el, 5))
+              .toString()
+              .replace(new RegExp(",", "gi"), " ") +
+            ")"
+        );
         break;
       }
 
